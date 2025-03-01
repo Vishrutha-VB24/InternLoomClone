@@ -1,5 +1,5 @@
-import HomePage from '@/components/HomePage'
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+
+import { createRootRoute,  Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
@@ -12,7 +12,7 @@ export const Route = createRootRoute({
         <Link href="/about" className="[&.active]:font-bold" to={'.'}>
           About
         </Link> */}
-        {/* <HomePage></HomePage> */}
+        
       </div>
       <hr />
       <Outlet />

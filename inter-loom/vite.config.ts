@@ -7,9 +7,16 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),react(),tailwindcss()],
+  build: {
+    outDir: 'dist',
+  },
+  server: {
+    port: 5174,  // Ensure SPA routing works
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: '/',
 })
