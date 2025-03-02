@@ -11,9 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as InternshipImport } from './routes/internship'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const InternshipRoute = InternshipImport.update({
+  id: '/internship',
+  path: '/internship',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/internship': {
+      id: '/internship'
+      path: '/internship'
+      fullPath: '/internship'
+      preLoaderRoute: typeof InternshipImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/internship': typeof InternshipRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/internship': typeof InternshipRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/internship': typeof InternshipRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/internship'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/internship'
+  id: '__root__' | '/' | '/internship'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InternshipRoute: typeof InternshipRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InternshipRoute: InternshipRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/internship"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/internship": {
+      "filePath": "internship.tsx"
     }
   }
 }

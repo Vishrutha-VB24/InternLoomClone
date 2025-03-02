@@ -4,22 +4,7 @@ export default function HomePage() {
   return (
     <div className="h-screen bg-gray-50">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-md">
-        <div className="flex items-center gap-2">
-          <img src="/interloom.webp" alt="" className="h-10 w-auto" />
-          
-        </div>
-        <div className="hidden md:flex gap-6 text-gray-700">
-          <a href="#" className="hover:text-blue-600">Internships</a>
-          <a href="#" className="hover:text-blue-600">Freelance</a>
-          <a href="#" className="hover:text-blue-600">Pricing</a>
-          <a href="#" className="hover:text-blue-600">Contact Us</a>
-        </div>
-        <div className="flex gap-4">
-          <Button variant="outline">Sign In</Button>
-          <Button className="bg-yellow-400 text-black hover:bg-yellow-500">Sign Up</Button>
-        </div>
-      </nav>
+      
 
       {/* Hero Section */}
       <header className="relative w-full h-[80vh] flex items-center justify-center bg-cover bg-center" 
