@@ -57,9 +57,7 @@ The application will start on `http://localhost:5174`.
 - **Response:**
   - **Success (200 OK):**
     ```json
-    {
-      "message": "Success",
-      "jobs": [
+    [
         {
           "title": "Software Engineering Internship",
           "company": "Tech Company",
@@ -67,7 +65,6 @@ The application will start on `http://localhost:5174`.
         },
         ...
       ]
-    }
     ```
 
   - **Error (400 Bad Request):**
