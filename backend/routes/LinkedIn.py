@@ -3,9 +3,20 @@ from flask_cors import CORS
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from routes.LinkedIn import get_internships
+import sys
+import os
 
-app = Flask(_name_)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "backend"))) # potential fix
+
+from backend.routes.linkedin import fetch_internships  # type: ignore
+
+app = Flask(__name__)
+CORS(app)
+
+# ... (rest of your code) ...
+  # Make sure it's lowercase
+
+app = Flask(__name__)  # ✅ Fixed __name__
 CORS(app)  # Enable CORS for React frontend
 
 # Default job title and location
@@ -16,7 +27,11 @@ def scrape_linkedin(title=DEFAULT_TITLE, location=DEFAULT_LOCATION):
     """Scrape LinkedIn for internship listings"""
     start = 0
     list_url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={title}&location={location}&start={start}"
-    response = requests.get(list_url)
+
+    headers = {  # ✅ Fixed: Add headers to avoid getting blocked
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    }
+    response = requests.get(list_url, headers=headers)
     
     if response.status_code != 200:
         return {"error": "Failed to fetch jobs from LinkedIn"}
@@ -38,12 +53,12 @@ def scrape_linkedin(title=DEFAULT_TITLE, location=DEFAULT_LOCATION):
     return job_list
 
 @app.route('/internships', methods=['GET'])
-def get_internships():
+def fetch_internships():  # ✅ Renamed function to avoid conflict
     """API Endpoint to get LinkedIn internships"""
     title = request.args.get("title", DEFAULT_TITLE)
     location = request.args.get("location", DEFAULT_LOCATION)
     internships = scrape_linkedin(title, location)
     return jsonify(internships)
 
-if _name_ == '_main_':
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":  # ✅ Fixed __name__
+    app.run(debug=True, port=5174)

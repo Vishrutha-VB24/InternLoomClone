@@ -76,7 +76,7 @@ export default function Internship() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get<Internship[]>("http://localhost:5000/internships")
+    axios.get<Internship[]>("http://localhost:5174/internships")
       .then((response) => {
         setInternships(response.data);
         setLoading(false);
