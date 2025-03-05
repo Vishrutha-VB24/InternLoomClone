@@ -70,18 +70,29 @@ interface Internship {
   location: string;
 }
 
+interface Internship {
+  title: string;   // Title of the internship
+  company: string; // Company offering the internship
+  location: string; // Location of the internship
+}
+
 export default function Internship() {
-  const [internships, setInternships] = useState<Internship[]>([]);
+  const [internships, setInternships] = useState<Internship[]>([]); // Initialize with an empty array
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get<Internship[]>("http://localhost:5174/internships")
+    axios.get<Internship[]>("http://127.0.0.1:5174/api/internships")
       .then((response) => {
-        setInternships(response.data);
+        if (Array.isArray(response.data)) {
+          setInternships(response.data); 
+        } else {
+          setError("Invalid data format received from server");
+        }
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Error fetching internships:", err);
         setError("Failed to fetch internships.");
         setLoading(false);
       });
