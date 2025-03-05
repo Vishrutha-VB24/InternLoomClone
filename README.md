@@ -11,7 +11,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository:**
    ```
-   git clone <https://github.com/Vishrutha-VB24/InternLoomClone.git>
+   git clone "https://github.com/Vishrutha-VB24/InternLoomClone.git"
    cd InternLoomClone/backend
    ```
 
