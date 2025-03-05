@@ -52,7 +52,7 @@ The application will start on `http://localhost:5174`.
 - **Query Parameters:**
   - `title` (optional): The job title to search for. Defaults to "Internship".
   - `location` (optional): The location to search in. Defaults to "United States".
-  ! Currently they are hard coded for specific location and title 
+!!!Currently they are hard coded for specific location and title !!!
 
 - **Response:**
   - **Success (200 OK):**
