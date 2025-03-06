@@ -10,7 +10,7 @@ export default function Navbar() {
                 </div>
                 <div className="hidden md:flex gap-6 text-gray-700">
                     <Link to="/internship" className="hover:text-blue-600">Internships</Link>
-                    <Link to="/freelance" className="hover:text-blue-600">Freelance</Link>
+                    <Link to="/internship" className="hover:text-blue-600">Freelance</Link>
                     <Link to="/pricing" className="hover:text-blue-600">Pricing</Link>
                     <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
                 </div>

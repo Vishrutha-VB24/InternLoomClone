@@ -13,7 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as SigninImport } from './routes/signin'
+import { Route as RegisterImport } from './routes/register'
+import { Route as PricingImport } from './routes/pricing'
+import { Route as LoginImport } from './routes/login'
 import { Route as InternshipImport } from './routes/internship'
+import { Route as ContactImport } from './routes/contact'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -30,9 +34,33 @@ const SigninRoute = SigninImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const RegisterRoute = RegisterImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PricingRoute = PricingImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const InternshipRoute = InternshipImport.update({
   id: '/internship',
   path: '/internship',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ContactRoute = ContactImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,11 +81,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactImport
+      parentRoute: typeof rootRoute
+    }
     '/internship': {
       id: '/internship'
       path: '/internship'
       fullPath: '/internship'
       preLoaderRoute: typeof InternshipImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingImport
+      parentRoute: typeof rootRoute
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterImport
       parentRoute: typeof rootRoute
     }
     '/signin': {
@@ -81,14 +137,22 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/internship': typeof InternshipRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/internship': typeof InternshipRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
 }
@@ -96,30 +160,67 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/internship': typeof InternshipRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/internship' | '/signin' | '/signup'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/internship'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/signin'
+    | '/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/internship' | '/signin' | '/signup'
-  id: '__root__' | '/' | '/internship' | '/signin' | '/signup'
+  to:
+    | '/'
+    | '/contact'
+    | '/internship'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/signin'
+    | '/signup'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/internship'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/signin'
+    | '/signup'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   InternshipRoute: typeof InternshipRoute
+  LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
+  RegisterRoute: typeof RegisterRoute
   SigninRoute: typeof SigninRoute
   SignupRoute: typeof SignupRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   InternshipRoute: InternshipRoute,
+  LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
+  RegisterRoute: RegisterRoute,
   SigninRoute: SigninRoute,
   SignupRoute: SignupRoute,
 }
@@ -135,7 +236,11 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/contact",
         "/internship",
+        "/login",
+        "/pricing",
+        "/register",
         "/signin",
         "/signup"
       ]
@@ -143,8 +248,20 @@ export const routeTree = rootRoute
     "/": {
       "filePath": "index.tsx"
     },
+    "/contact": {
+      "filePath": "contact.tsx"
+    },
     "/internship": {
       "filePath": "internship.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
+    },
+    "/pricing": {
+      "filePath": "pricing.tsx"
+    },
+    "/register": {
+      "filePath": "register.tsx"
     },
     "/signin": {
       "filePath": "signin.tsx"

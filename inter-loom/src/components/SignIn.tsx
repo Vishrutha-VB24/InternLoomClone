@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 const SignIn = () => {
   return (
@@ -14,28 +15,35 @@ const SignIn = () => {
         {/* Right Section */}
         <div className="w-1/2 space-y-4">
           <h2 className="text-2xl font-semibold">Sign In As</h2>
-          <Card className="cursor-pointer border border-gray-600 hover:bg-gray-800">
-            <CardContent className="flex items-center justify-between p-4">
-              <div>
-                <p className="flex items-center text-lg font-medium">
-                  <span className="mr-2">🎓</span> Student
-                </p>
-                <p className="text-sm text-gray-400">Students studying from K1-12 / universities</p>
-              </div>
-              <ArrowRight className="text-gray-400" />
-            </CardContent>
-          </Card>
-          <Card className="cursor-pointer border border-gray-600 hover:bg-gray-800">
-            <CardContent className="flex items-center justify-between p-4">
-              <div>
-                <p className="flex items-center text-lg font-medium">
-                  <span className="mr-2">🚀</span> Start-Up
-                </p>
-                <p className="text-sm text-gray-400">People building a start-up</p>
-              </div>
-              <ArrowRight className="text-gray-400" />
-            </CardContent>
-          </Card>
+
+          <Link to="/login">
+            <Card className="cursor-pointer border border-gray-600 hover:bg-gray-800">
+              <CardContent className="flex items-center justify-between p-4">
+                <div>
+                  <p className="flex items-center text-lg font-medium">
+                    <span className="mr-2">🎓</span> Student
+                  </p>
+                  <p className="text-sm text-gray-400">Students studying from K1-12 / universities</p>
+                </div>
+                <ArrowRight className="text-gray-400" />
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/login">
+            <Card className="cursor-pointer border border-gray-600 hover:bg-gray-800">
+              <CardContent className="flex items-center justify-between p-4">
+                <div>
+                  <p className="flex items-center text-lg font-medium">
+                    <span className="mr-2">🚀</span> Start-Up
+                  </p>
+                  <p className="text-sm text-gray-400">People building a start-up</p>
+                </div>
+                <ArrowRight className="text-gray-400" />
+              </CardContent>
+            </Card>
+          </Link>
+
         </div>
       </div>
     </div>
