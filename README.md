@@ -80,4 +80,13 @@ The application will start on `http://localhost:5174`.
       "error": "Failed to fetch jobs from LinkedIn"
     }
     ```
+# Inter-loom(frontend)
 
+## Prerequisites
+
+Before you begin, ensure you have the following installation:
+-npm 
+-vite package with shadcn tailwind framework
+-Configure some of the file as mentioned in the package
+-cd inter-loom 
+-npm run dev
