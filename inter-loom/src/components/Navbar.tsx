@@ -5,9 +5,13 @@ export default function Navbar() {
     return (
         <div>
             <nav className="max-w-screen-lg mx-auto flex justify-between items-center py-4 px-6">
+                <Link to="/">
                 <div className="flex items-center gap-2">
                     <img src="/interloom.webp" alt="Interloom" className="h-10 w-auto" />
                 </div>
+
+                </Link>
+                
                 <div className="hidden md:flex gap-6 text-gray-700">
                     <Link to="/internship" className="hover:text-blue-600">Internships</Link>
                     <Link to="/internship" className="hover:text-blue-600">Freelance</Link>
