@@ -102,9 +102,11 @@ export default function Internship() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
+    <>
+    <h1 className="text-lg font-bold p-1 ml-1">TurnLOOM</h1>
     <div className="flex gap-6 px-8 py-4">
       {/* Left Section - Internship Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-grow">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {internships.length > 0 ? (
           internships.map((job, index) => (
             <div key={index} className="border rounded-lg p-4 shadow-sm bg-white">
@@ -145,6 +147,7 @@ export default function Internship() {
          </div>
       </div>
     </div>
+    </>
   );
 }
 

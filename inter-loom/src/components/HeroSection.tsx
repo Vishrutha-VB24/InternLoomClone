@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 
 export default function HeroSection() {
@@ -9,7 +10,10 @@ export default function HeroSection() {
           <Button className="bg-blue-600 hover:bg-blue-700 mb-4">Empowering Your Career Growth</Button>
           <h1 className="text-5xl font-bold">Weaving Your Future Together</h1>
           <p className="mt-4 text-lg">Discover Exciting Internship Opportunities and Unlock Your Potential</p>
-          <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white">Get Started Now</Button>
+          <Link to="/internship">
+            <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white">Get Started Now</Button>
+          </Link>
+          
         </div>
       </header>
     );
