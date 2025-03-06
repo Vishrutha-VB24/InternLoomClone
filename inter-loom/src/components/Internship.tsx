@@ -134,6 +134,15 @@ export default function Internship() {
           <li>✔ Accepted Internships <span className="float-right">30</span></li>
           <li>❌ Rejected Internships <span className="float-right">10</span></li>
         </ul>
+        <h3 className="font-semibold text-lg mt-6">Suggested Courses</h3>
+        <div className="mt-3 space-y-2">
+           {Array(6).fill(0).map((_, i) => (
+             <div key={i} className="border p-3 rounded text-sm cursor-pointer hover:bg-gray-100">
+               <h4 className="font-semibold">Full Stack Course</h4>
+               <p className="text-gray-500">12+ hrs Content • Mock tests for interviews</p>
+             </div>
+           ))}
+         </div>
       </div>
     </div>
   );
