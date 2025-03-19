@@ -5,7 +5,7 @@ import FAQSection from "./FAQSection";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-3">
     <HeroSection />
     <PromoSection />
     <FeaturesSection />

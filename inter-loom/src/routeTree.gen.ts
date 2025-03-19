@@ -17,6 +17,7 @@ import { Route as RegisterImport } from './routes/register'
 import { Route as PricingImport } from './routes/pricing'
 import { Route as LoginImport } from './routes/login'
 import { Route as InternshipImport } from './routes/internship'
+import { Route as FreelanceImport } from './routes/freelance'
 import { Route as ContactImport } from './routes/contact'
 import { Route as IndexImport } from './routes/index'
 
@@ -58,6 +59,12 @@ const InternshipRoute = InternshipImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const FreelanceRoute = FreelanceImport.update({
+  id: '/freelance',
+  path: '/freelance',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ContactRoute = ContactImport.update({
   id: '/contact',
   path: '/contact',
@@ -86,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactImport
+      parentRoute: typeof rootRoute
+    }
+    '/freelance': {
+      id: '/freelance'
+      path: '/freelance'
+      fullPath: '/freelance'
+      preLoaderRoute: typeof FreelanceImport
       parentRoute: typeof rootRoute
     }
     '/internship': {
@@ -138,6 +152,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
@@ -149,6 +164,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
@@ -161,6 +177,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
@@ -174,6 +191,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contact'
+    | '/freelance'
     | '/internship'
     | '/login'
     | '/pricing'
@@ -184,6 +202,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contact'
+    | '/freelance'
     | '/internship'
     | '/login'
     | '/pricing'
@@ -194,6 +213,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/contact'
+    | '/freelance'
     | '/internship'
     | '/login'
     | '/pricing'
@@ -206,6 +226,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
+  FreelanceRoute: typeof FreelanceRoute
   InternshipRoute: typeof InternshipRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
@@ -217,6 +238,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
+  FreelanceRoute: FreelanceRoute,
   InternshipRoute: InternshipRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
@@ -237,6 +259,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/contact",
+        "/freelance",
         "/internship",
         "/login",
         "/pricing",
@@ -250,6 +273,9 @@ export const routeTree = rootRoute
     },
     "/contact": {
       "filePath": "contact.tsx"
+    },
+    "/freelance": {
+      "filePath": "freelance.tsx"
     },
     "/internship": {
       "filePath": "internship.tsx"

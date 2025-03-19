@@ -8,7 +8,7 @@ export default function PromoSection() {
         {/* Left Section: Image */}
         <div className="w-full md:w-1/2 flex justify-start">
           <img
-            src="/image.webp" // Update with the correct image path
+            src="/image.webp" 
             alt="People working on a laptop"
             className="rounded-xl shadow-md w-3/4 md:w-2/3 max-w-[300px] object-cover"
           />
