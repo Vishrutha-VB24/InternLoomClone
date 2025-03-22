@@ -1,5 +1,5 @@
 import { conf } from "@/conf/conf";
-import {Client, Databases} from "appwrite";
+import {Client, Databases, ID} from "appwrite";
 
 export class DBService {
   client = new Client();
@@ -50,10 +50,11 @@ export class DBService {
 
   async createDocument(collectionId: string, data: object, documentId?: string) {
     try {
+      console.log("Creating document in:", this.databaseId, collectionId);
       return await this.database.createDocument(
         this.databaseId,
         collectionId,
-        documentId || 'unique()', // Use 'unique()' for auto-generating document IDs if not provided
+        documentId ||  ID.unique(), // Use 'unique()' for auto-generating document IDs if not provided
         data
       );
     } catch (error) {

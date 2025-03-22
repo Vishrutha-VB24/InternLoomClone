@@ -1,6 +1,8 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://backend-e668up3sj-vishrutha-v-bs-projects.vercel.app/api/$1"
+    }
+  ]
+}
