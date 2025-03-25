@@ -13,11 +13,14 @@ const conf = {
 const client = new Client()
   .setEndpoint(conf.appWriteUrl)
   .setProject(conf.appWriteProjectID);
+  
 
+  // Try fetching the database details to confirm access
 // Initialize Appwrite Services
 const account = new Account(client);
 const databases = new Databases(client);
 // const teams = new Teams(client); 
+// databases.get("Your_Database_ID").then(console.log).catch(console.error);
 
 console.log("Appwrite Config:", conf);
 
