@@ -7,8 +7,6 @@ import { Client, Account, ID } from "appwrite";
 import { conf } from "@/conf/conf";
 
 
-
-// Configure Appwrite Client
 const client = new Client()
   .setEndpoint(conf.appWriteUrl)
   .setProject(conf.appWriteProjectID);
@@ -20,7 +18,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userType, setUserType] = useState("user"); // Default user type
+  const [userType, setUserType] = useState("user"); 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -42,11 +40,11 @@ const Register = () => {
       console.log("User Registered:", user);
 
       alert("Registration successful! Please check your email to confirm.");
-      navigate({ to: "/login" }); // Redirect to login page
+      navigate({ to: "/login" }); 
     } catch (err) {
       console.error("Registration failed:", err);
 
-      if (err.message.includes("Rate limit")) {
+      if (err instanceof Error && err.message.includes("Rate limit")) {
         setError("Too many attempts. Please try again after a few minutes.");
       } else {
         setError("Registration failed. Please try again.");

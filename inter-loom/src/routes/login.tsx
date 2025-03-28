@@ -5,6 +5,6 @@ export const Route = createFileRoute('/login')({
   component: Login,
 });
 
-function login() {
-  return <Login />;
-}
+// function login() {
+//   return <Login />;
+// }

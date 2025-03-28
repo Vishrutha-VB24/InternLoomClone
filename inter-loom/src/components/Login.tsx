@@ -8,16 +8,17 @@ import authService from "@/appwrite/auth";
 import useAuthStore from "@/store/authStore.ts";
 
 const Login = () => {
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
+    const emailRef = useRef<HTMLInputElement | null>(null);
+    const passwordRef = useRef<HTMLInputElement | null>(null);
     const { setUserInfo } = useAuthStore();
     const navigate = useNavigate();
 
-    async function handleLogin(e) {
+    async function handleLogin(e: { preventDefault: () => void; }) {
         e.preventDefault();
         try {
-            const email = emailRef.current.value;
-            const password = passwordRef.current.value;
+            const email = emailRef.current?.value ?? "";
+            const password = passwordRef.current?.value ?? "";
+
 
             // Clear any existing sessions before logging in
             await authService.logout();
@@ -26,13 +27,14 @@ const Login = () => {
             setUserInfo(userinfo);
             navigate({ to: "/internship", replace: true });
         } catch (error) {
-            console.error("Login failed:", error.message);
+            const err = error as Error;
+            console.error("Login failed:", err.message);
             alert("Invalid email or password.");
         }
     }
 
     return (
-        <div className="flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/bg-image.jpg')" }}>
+        <div className="flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/laptop-Work.jpg.jpg')" }}>
             <div className="flex w-full max-w-4xl rounded-2xl bg-black/80 p-6 text-white shadow-lg">
                 <div className="w-1/2 p-6">
                     <h1 className="text-4xl font-bold">Welcome Back</h1>
