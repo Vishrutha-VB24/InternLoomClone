@@ -19,6 +19,7 @@ import { Route as LoginImport } from './routes/login'
 import { Route as InternshipImport } from './routes/internship'
 import { Route as FreelanceImport } from './routes/freelance'
 import { Route as ContactImport } from './routes/contact'
+import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -71,6 +72,11 @@ const ContactRoute = ContactImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AuthenticatedRoute = AuthenticatedImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
@@ -86,6 +92,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedImport
       parentRoute: typeof rootRoute
     }
     '/contact': {
@@ -151,6 +164,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '': typeof AuthenticatedRoute
   '/contact': typeof ContactRoute
   '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
@@ -163,6 +177,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '': typeof AuthenticatedRoute
   '/contact': typeof ContactRoute
   '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
@@ -176,6 +191,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRoute
   '/contact': typeof ContactRoute
   '/freelance': typeof FreelanceRoute
   '/internship': typeof InternshipRoute
@@ -190,6 +206,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | ''
     | '/contact'
     | '/freelance'
     | '/internship'
@@ -201,6 +218,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | ''
     | '/contact'
     | '/freelance'
     | '/internship'
@@ -212,6 +230,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/contact'
     | '/freelance'
     | '/internship'
@@ -225,6 +244,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRoute
   ContactRoute: typeof ContactRoute
   FreelanceRoute: typeof FreelanceRoute
   InternshipRoute: typeof InternshipRoute
@@ -237,6 +257,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRoute,
   ContactRoute: ContactRoute,
   FreelanceRoute: FreelanceRoute,
   InternshipRoute: InternshipRoute,
@@ -258,6 +279,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/_authenticated",
         "/contact",
         "/freelance",
         "/internship",
@@ -270,6 +292,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/_authenticated": {
+      "filePath": "_authenticated.tsx"
     },
     "/contact": {
       "filePath": "contact.tsx"

@@ -1,10 +1,15 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { AuthStoreType } from '@/store/authStore';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
-export const Route = createRootRoute({
-  component: () => (
+interface RouterContext {
+  auth: AuthStoreType
+}
+export const Route = createRootRouteWithContext<RouterContext>()({
+  component: () => {
+    return (
     <>
       <div className="flex flex-col min-h-screen">
       <header>
@@ -25,5 +30,6 @@ export const Route = createRootRoute({
 
       
     </>
-  ),
+   );
+  },
 });

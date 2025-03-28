@@ -1,28 +1,10 @@
-import {createFileRoute,  useNavigate} from '@tanstack/react-router'
-import Login from '@/components/Login';
-import useAuthStore from '@/store/authStore';
-import { useEffect } from 'react';
+import { createFileRoute } from "@tanstack/react-router";
+import Login from "@/components/Login";
 
 export const Route = createFileRoute('/login')({
-  component: RouteComponent,
-})
+  component: Login,
+});
 
-
-function RouteComponent() {
-
-  const {userInfo} = useAuthStore();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if(userInfo){
-      navigate({to: '/login'})
-    }
-  }, []);
-  useEffect(() => {
-    if(userInfo){
-      navigate({to: '/login'})
-    }
-  },[navigate, userInfo]);
-  return (
-    <Login></Login>
-  )
+function login() {
+  return <Login />;
 }

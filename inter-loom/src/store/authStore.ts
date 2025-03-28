@@ -2,27 +2,25 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface AuthStore {
-  userInfo: Record<string, unknown> | null;
-  login: boolean;
-  setUser: (user: Record<string, unknown>) => void;
-  clearUser: () => void;
+  userInfo: object | null;
+  setUserInfo: (userData: object) => void;
+  clearUserInfo: () => void;
 }
 
 const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       userInfo: null,
-      login: false,
 
-      setUser: (user) => set({ userInfo: user, login: true }),
+      setUserInfo: (userData) => set({ userInfo: userData }),
 
-      clearUser: () => set({ userInfo: null, login: false }),
+      clearUserInfo: () => set({ userInfo: null }),
     }),
     {
-      name: 'auth-storage',
+      name: 'auth-store',
     }
   )
 );
 
 export default useAuthStore;
-export type AuthState = ReturnType<typeof useAuthStore>;
+export type AuthStoreType  = ReturnType<typeof useAuthStore>;

@@ -7,6 +7,9 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),react(),tailwindcss()],
+  // define: {
+  //   'process.env.NODE_ENV': JSON.stringify(mode),
+  // },
   build: {
     outDir: 'dist',
   },
